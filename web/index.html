@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Twit.x Template</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="row">
+			<div class="span12 offset1 hero-unit">
+				<h1>Welcome to Twit.x!</h1>
+				<p>A "Twitter-clone" implemented using Vert.x, Twitter Bootstrap and Knockout.js.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4 offset2">
+				<h2>What's up?</h2>
+				<hr/>
+				<form>
+					<label>Type the message you want to post:</label>
+					<input type="text" placeholder="Hacking on Vert.x..." data-bind="value: twitxBox">
+					<button type="button" class="btn btn-primary" data-bind="click: twitxIt">Twit.x it!</button>
+				</form>	
+		</div>
+			<div class="span7 offset1">
+				<h2>Your message stream:</h2>
+				<hr/>				
+				<div id="stream-container" data-bind="foreach: messages">
+					<div class="well" data-bind="text: msg"></div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.8.0.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/knockout-2.1.0.js"></script>
+		<script src="js/twitx.js"></script>
+	</body>
+</html>
+
