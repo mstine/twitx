@@ -11,15 +11,15 @@
 				<p>A "Twitter-clone" implemented using Vert.x, Twitter Bootstrap and Knockout.js.</p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" data-bind="visible: authenticated">
 			<div class="span4 offset2">
-				<h2>What's up?</h2>
+							<h2>What's up,<span data-bind="text: profile().fullName"></span>?</h2>
 				<hr/>
-				<form>
+				<form data-bind="submit: twitxIt">
 					<label>Type the message you want to post:</label>
 					<input type="text" placeholder="Hacking on Vert.x..." data-bind="value: twitxBox">
 					<button type="button" class="btn btn-primary" data-bind="click: twitxIt">Twit.x it!</button>
-				</form>	
+					</form>
 		</div>
 			<div class="span7 offset1">
 				<h2>Your message stream:</h2>
@@ -29,9 +29,23 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" data-bind="visible: showLoginForm">
+						<div class="span6 offset5">
+										<h2>Login!</h2>
+										<form data-bind="submit: login">
+														<label>Username:</label>
+														<input type="text" data-bind="value: username"/> 	
+														<label>Password:</label>
+														<input type="password" data-bind="value: password"/>
+														<p> <button type="button" class="btn btn-primary" data-bind="click: login">Login</button></p>
+										</form>
+						</div>
+		</div>
 		<script src="js/jquery-1.8.0.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/knockout-2.1.0.js"></script>
+		<script src="js/sockjs-0.2.1.min.js"></script>
+		<script src="js/vertxbus.js"></script>
 		<script src="js/twitx.js"></script>
 	</body>
 </html>
