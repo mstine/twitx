@@ -51,10 +51,10 @@ var messageHandler = function(message) {
     // This should really be on a worker...refactor!
     for (var i = 0; i < reply.results.length; i++) {
       // Stream the message to each person that's following me...
-      eb.send('messages.outgoing.'+reply.results[i].username, message);
+      eb.publish('messages.outgoing.'+reply.results[i].username, message);
     }
     // Send the message to me as well...
-    eb.send('messages.outgoing.'+message.username, message);
+    eb.publish('messages.outgoing.'+message.username, message);
   });
 }
 eb.registerHandler('messages.incoming', messageHandler);
@@ -81,7 +81,7 @@ eb.registerHandler('messages.primestream', function(message, replier) {
                 sort: {timestamp: -1},
                 limit: 10 }, 
                 function(queryReply) {
-                  eb.send('messages.outgoing.'+reply.result.username, queryReply)
+                  eb.publish('messages.outgoing.'+reply.result.username, queryReply)
                 });
                 replier(reply);
     }
