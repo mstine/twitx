@@ -13,7 +13,7 @@
 		</div>
 		<div class="row" data-bind="visible: authenticated">
 			<div class="span4 offset2">
-							<h2>What's up,<span data-bind="text: profile().fullName"></span>?</h2>
+        <h2>What's up,<br/><span data-bind="text: profile().fullName"></span>?</h2>
 				<hr/>
 				<form data-bind="submit: twitxIt">
 					<label>Type the message you want to post:</label>
@@ -25,7 +25,7 @@
 				<h2>Your message stream:</h2>
 				<hr/>				
 				<div id="stream-container" data-bind="foreach: messages">
-					<div class="well" data-bind="text: msg"></div>
+          <div class="well"><strong><span data-bind="text: username"></span>:</strong> <span data-bind="text: message"></span></div>
 				</div>
 			</div>
 		</div>
