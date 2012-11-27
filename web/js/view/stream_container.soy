@@ -1,0 +1,11 @@
+{namespace twitx.view}
+
+/**
+ * @param messages the list of messages
+ */
+{template .streamContainer}
+  {foreach $message in $messages}
+    <div class="well"><strong>{$message.username}:</strong> {$message.message}</div>
+  {/foreach}
+{/template}
+
